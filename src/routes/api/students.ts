@@ -26,4 +26,4 @@ router.patch("/:studentId", validateReqBody(schemas.addSchema), controllersWrapp
 router.post("/set", controllersWrapper(studentsController.setMockCollection));
 
 
-module.exports = router;
+export default router;

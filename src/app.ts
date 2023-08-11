@@ -4,7 +4,8 @@ import morgan from 'morgan';
 import cors from 'cors';
 import { IResponseError } from 'interfaces';
 
-const studentsRouter = require('./routes/api/students');
+import studentsRouter from './routes/api/students';
+import fsRouter from './routes/api/files';
 
 dotenv.config({ path: __dirname + '/.env' });
 
@@ -18,13 +19,15 @@ newApp.use(express.json());
 
 newApp.use('/api/students', studentsRouter);
 
+newApp.use('/api/files', fsRouter);
+
 newApp.use((req: Request, res: Response) => {
   res.status(404).json({ message: 'Not found' });
 });
 
 newApp.use(
   (err: IResponseError, req: Request, res: Response, next: NextFunction) => {
-    res.status(err.code ?? 500).json(err.message ?? 'server error');
+    res.status(err.code || 500).json(err.message || 'server error');
   }
 );
 

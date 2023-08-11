@@ -1,16 +1,19 @@
 import { Request } from 'express';
-const multer = require('multer');
-const path = require('path');
+import multer from 'multer';
+import path from 'path';
 
 const tempDir = path.join(__dirname, '../', 'temp');
 
 const multerConfig = multer.diskStorage({
   destination: tempDir,
-  filename: (req: Request, file: { originalname: any; }, cb: (arg0: null, arg1: any) => void) => {
+  filename: (req: Request, file: Express.Multer.File, cb: (error: Error | null, filename: string) => void) => {
     cb(null, file.originalname);
   },
 });
 
 export const upload = multer({
   storage: multerConfig,
+  limits: {
+    fileSize: 1048576,
+  },
 });
