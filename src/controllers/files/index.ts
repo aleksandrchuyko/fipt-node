@@ -1,1 +1,2 @@
-export * from './uploadCSV';
+export * from './uploadMagisters';
+export * from './uploadBachelors';

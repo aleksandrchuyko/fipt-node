@@ -13,6 +13,8 @@ import { controllersWrapper } from '../../utils';
 
 router.get("/", controllersWrapper(studentsController.getAll));
 
+router.get("/import", controllersWrapper(studentsController.importCSV));
+
 router.get("/stats/", controllersWrapper(studentsController.getStatistic));
 
 router.get("/:studentId", controllersWrapper(studentsController.getById));

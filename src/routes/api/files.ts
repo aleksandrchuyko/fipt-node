@@ -7,9 +7,15 @@ import { controllersWrapper } from '../../utils';
 import { upload } from 'middlewares';
 
 router.post(
-  '/students',
-  upload.single('students'),
-  controllersWrapper(filesController.uploadCSV)
+  '/magisters',
+  upload.single('magisters'),
+  controllersWrapper(filesController.uploadMagisters)
+);
+
+router.post(
+  '/bachelors',
+  upload.single('bachelors'),
+  controllersWrapper(filesController.uploadBachelors)
 );
 
 export default router;
