@@ -9,8 +9,6 @@ import { schemas } from '../../models/students/student';
 
 import { controllersWrapper } from '../../utils';
 
-
-
 router.get("/", controllersWrapper(studentsController.getAll));
 
 router.get("/import", controllersWrapper(studentsController.importCSV));

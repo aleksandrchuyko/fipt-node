@@ -9,11 +9,9 @@ export const importCSV = async (req: Request, res: Response) => {
     
     
     const dbPath = path.join(__dirname, '../../', PATH_DB);
-    if (fs.existsSync(dbPath)) {
-      fs.unlink(dbPath, (error) => {
-        console.log(error);
-      });
-		}
+    // if (fs.existsSync(dbPath)) {
+    //   fs.unlinkSync(dbPath);
+		// }
 		
 		const compositionPath = path.join(__dirname, '../../', PATH_MAGISTERS);
 		prepareData(compositionPath);
