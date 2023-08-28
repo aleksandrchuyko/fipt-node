@@ -6,18 +6,14 @@ export const prepareData = async (filepath = '../public/docs/students.csv') => {
   const db = connectToDatabase();
 
   // await db.run(`DELETE FROM migration`);
-  // let cnt = 0;
 
-  function print(name: any) {
-    console.log(name);
-  }
-  await db.run(
+  await db.get(
     `SELECT COUNT(*) FROM migration`,
     function (error: { message: any }, count: any) {
       if (error) {
         return console.log(error.message);
       } else {
-        print(count);
+        console.log(count);
       }
     }
   );
@@ -25,7 +21,7 @@ export const prepareData = async (filepath = '../public/docs/students.csv') => {
   fs.createReadStream(filepath, 'utf8')
     .pipe(parse({ delimiter: ';', from_line: 2 }))
     .on('data', function (row) {
-      // console.log(row[1], row[5], row[6], row[18], row[19], row[23], row[25]);
+      console.log(row[1], row[5], row[6], row[18], row[19], row[23], row[25]);
       db.serialize(function () {
         db.run(
           `INSERT INTO migration VALUES (?, ?, ? , ?, ?, ?, ?)`,
@@ -38,4 +34,16 @@ export const prepareData = async (filepath = '../public/docs/students.csv') => {
         );
       });
     });
+    // .end(() => {
+    //   db.get(
+    //     `SELECT COUNT(*) FROM migration`,
+    //     function (error: { message: any }, count: any) {
+    //       if (error) {
+    //         return console.log(error.message);
+    //       } else {
+    //         console.log(count);
+    //       }
+    //     }
+    //   );
+    // });
 };

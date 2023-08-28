@@ -1,3 +1,6 @@
 node_modules/
 dist/
 .env
+src/temp/magister_.csv
+src/repositories/db/students.db
+src/public/docs/magisters.csv
