@@ -4,3 +4,5 @@ dist/
 src/temp/magister_.csv
 src/repositories/db/students.db
 src/public/docs/magisters.csv
+src/public/docs/magisters.csv
+src/repositories/db/students.db
