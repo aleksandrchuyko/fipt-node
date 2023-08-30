@@ -1,5 +1,6 @@
-const fs = require('fs');
+import fs from 'fs';
 const sqlite3 = require('sqlite3').verbose();
+import { AsyncDatabase } from "promised-sqlite3";
 
 export const connectToDatabase = (filepath = 'src/repositories/db/students.db') => {
   
@@ -16,7 +17,7 @@ export const connectToDatabase = (filepath = 'src/repositories/db/students.db') 
         CREATE TABLE migration
         (
           card_id       INT,
-          applicant VARCHAR(50),
+          applicant VARCHAR(100),
           birth_date   VARCHAR(10),
           start_study        VARCHAR(10),
           end_study              VARCHAR(10),
@@ -25,6 +26,6 @@ export const connectToDatabase = (filepath = 'src/repositories/db/students.db') 
         )
       `);
     console.log('Connected to the database successfully');
-    return db;
+    return AsyncDatabase.open(filepath);
   }
 };
