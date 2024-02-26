@@ -5,4 +5,5 @@ export * from './removeById';
 export * from './updateById';
 export * from './getStatistic';
 export * from './setMockCollection';
+export * from './importCSV';
 

@@ -9,9 +9,9 @@ import { schemas } from '../../models/students/student';
 
 import { controllersWrapper } from '../../utils';
 
-
-
 router.get("/", controllersWrapper(studentsController.getAll));
+
+router.get("/import", controllersWrapper(studentsController.importCSV));
 
 router.get("/stats/", controllersWrapper(studentsController.getStatistic));
 
@@ -26,4 +26,4 @@ router.patch("/:studentId", validateReqBody(schemas.addSchema), controllersWrapp
 router.post("/set", controllersWrapper(studentsController.setMockCollection));
 
 
-module.exports = router;
+export default router;
