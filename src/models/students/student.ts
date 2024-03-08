@@ -1,9 +1,11 @@
+import { DEGREE } from '../../constants';
+
 const { Schema, model } = require('mongoose');
 const Joi = require('joi');
 
 const { handleMongoSaveError } = require('../../utils');
 
-const degree = ['Магістр', 'Бакалавр'];
+const degree = [DEGREE.MAGISTER, DEGREE.BACHELOR];
 
 const studentSchema = new Schema(
   {
