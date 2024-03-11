@@ -6,6 +6,7 @@ import { IResponseError } from 'interfaces';
 
 import studentsRouter from './routes/api/students';
 import fsRouter from './routes/api/files';
+import authRouter from './routes/api/auth';
 
 dotenv.config({ path: __dirname + '/.env' });
 
@@ -17,9 +18,13 @@ newApp.use(morgan(formatsLogger));
 newApp.use(cors());
 newApp.use(express.json());
 
+newApp.use('/api/users', authRouter);
+
 newApp.use('/api/students', studentsRouter);
 
 newApp.use('/api/files', fsRouter);
+
+
 
 newApp.use((req: Request, res: Response) => {
   res.status(404).json({ message: 'Not found' });
